@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	#main{
+		border-radius: 2px solid green;
+		background-color: rgba(0,255,0,0.3);
+		opacity: 0.3;
+		width: 50px;
+		height: 50px;
+		box-sizing: border-box;
+		transition: width 4s, height 3s, transform 5s;
+		animation-name: example;
+		animation-duration: 5s;
+		animation-iteration-count: infinite;
+	}
+	#main:hover{
+		transform: rotate(180deg) scale(3);
+		width: 200px;
+		height: 200px;
+	}
+
+	@keyframes example{
+		0% {background-color: pink;}
+		15% {background-color: yellow;}
+		25% {background-color: blue;}
+		50% {background-color: red;}
+		75% {background-color: green;}
+		90% {background-color: purple;}
+	}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+	<div id='main' class="first"></div>
+	<script type="text/javascript">
+
+	function addLeadZero(value){
+		return value > 9 ? value : '0' + value;
+	}
+	var interval = setInterval(function (){
+	/*dt = document.body.innerHTML = new Date();
+
+	document.body.innerHTML = dt.getHours() + ':' + dt.getMinutes() + ':' +dt.getSeconds();
+	*/
+	var dt = new Date();
+
+	var hours = dt.getHours();
+	var minutes = dt.getMinutes();
+	var seconds = dt.getSeconds();
+
+	seconds = addLeadZero(seconds);
+	minutes = addLeadZero(minutes);
+	hours = addLeadZero(hours);
+
+	document.getElementById("container").innerHTML = hours + ":" + minutes + ":" + seconds;
+
+
+	},1000);
+
+var firstClass=document.getElementsByClassName("first")[0];
+
+function borderDiv(){
+		elem = this;
+					
+		var prevWidth = parseInt(getComputedStyle(elem).width);
+		var prevHeight = parseInt(getComputedStyle(elem).width);
+		var leftValue = parseInt(getComputedStyle(elem).left);
+		var topValue = parseInt(getComputedStyle(elem).top);
+
+		elem.style.width=prevWidth + 25 +'px';
+		elem.style.height=prevHeight + 25 +'px';
+		elem.style.left=leftValue + 25 +'px';
+		elem.style.top=topValue + 25 +'px';
+		elem.style.opacity = 1;
+	}
+
+
+	firstClass.addEventListener("click", borderDiv);
+
+	</script>
+</body>
+</html>
